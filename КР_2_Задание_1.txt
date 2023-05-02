@@ -1,0 +1,94 @@
+
+Задание 1
+ 
+1) Используйте команды операционной системы Linux
+и создайте две новых директории – «Игрушки для школьников» и «Игрушки для дошколят»
+
+valery@valery-vm:~/Documents/test_2/part_1$ mkdir "Игрушки для школьников" "Игрушки для дошколят"
+valery@valery-vm:~/Documents/test_2/part_1$ ll
+total 16
+drwxrwxr-x 4 valery valery 4096 Apr 29 10:23  ./
+drwxrwxr-x 3 valery valery 4096 Apr 29 10:10  ../
+drwxrwxr-x 2 valery valery 4096 Apr 29 10:23 'Игрушки для дошколят'/
+drwxrwxr-x 2 valery valery 4096 Apr 29 10:23 'Игрушки для школьников'/
+
+
+2) Создайте в директории «Игрушки для школьников»
+текстовые файлы - «Роботы», «Конструктор», «Настольные игры»
+
+valery@valery-vm:~/Documents/test_2/part_1$ cd 'Игрушки для школьников'/
+valery@valery-vm:~/Documents/test_2/part_1/Игрушки для школьников$ touch Роботы Конструктор 'Настольные игры'
+valery@valery-vm:~/Documents/test_2/part_1/Игрушки для школьников$ ll
+total 8
+drwxrwxr-x 2 valery valery 4096 Apr 29 10:28  ./
+drwxrwxr-x 4 valery valery 4096 Apr 29 10:23  ../
+-rw-rw-r-- 1 valery valery    0 Apr 29 10:28  Конструктор
+-rw-rw-r-- 1 valery valery    0 Apr 29 10:28 'Настольные игры'
+-rw-rw-r-- 1 valery valery    0 Apr 29 10:28  Роботы
+valery@valery-vm:~/Documents/test_2/part_1/Игрушки для школьников$ 
+
+
+3) Создайте в директории «Игрушки для дошколят»
+текстовые файлы «Мягкие игрушки», «Куклы», «Машинки»
+
+valery@valery-vm:~/Documents/test_2/part_1$ cd Игрушки\ для\ дошколят/
+valery@valery-vm:~/Documents/test_2/part_1/Игрушки для дошколят$ touch 'Мягкие игрушки' Куклы Машинки
+valery@valery-vm:~/Documents/test_2/part_1/Игрушки для дошколят$ ll
+total 8
+drwxrwxr-x 2 valery valery 4096 Apr 29 10:35  ./
+drwxrwxr-x 4 valery valery 4096 Apr 29 10:23  ../
+-rw-rw-r-- 1 valery valery    0 Apr 29 10:35  Куклы
+-rw-rw-r-- 1 valery valery    0 Apr 29 10:35  Машинки
+-rw-rw-r-- 1 valery valery    0 Apr 29 10:35 'Мягкие игрушки'
+valery@valery-vm:~/Documents/test_2/part_1/Игрушки для дошколят$ 
+
+
+4) Объединить 2 директории в одну «Имя Игрушки»
+
+valery@valery-vm:~/Documents/test_2/part_1$ mkdir 'Имя Игрушки'
+valery@valery-vm:~/Documents/test_2/part_1$ mv 'Игрушки для школьников'/ 'Игрушки для дошколят'/ 'Имя Игрушки'/
+valery@valery-vm:~/Documents/test_2/part_1$ 
+
+
+5) Переименовать директорию «Имя Игрушки» в «Игрушки»
+
+valery@valery-vm:~/Documents/test_2/part_1$ mv 'Имя Игрушки'/ 'Игрушки'
+valery@valery-vm:~/Documents/test_2/part_1$ ll
+total 28
+drwxrwxr-x 5 valery valery 4096 Apr 29 11:12  ./
+drwxrwxr-x 3 valery valery 4096 Apr 29 10:10  ../
+-rw-rw-r-- 1 valery valery 5657 Apr 29 10:50  cp_manual
+drwxrwxr-x 4 valery valery 4096 Apr 29 11:10  Игрушки/
+drwxrwxr-x 2 valery valery 4096 Apr 29 10:35 'Игрушки для дошколят'/
+drwxrwxr-x 2 valery valery 4096 Apr 29 10:28 'Игрушки для школьников'/
+
+6) Просмотреть содержимое каталога «Игрушки».
+
+valery@valery-vm:~/Documents/test_2/part_1$ ll 'Игрушки'
+total 16
+drwxrwxr-x 4 valery valery 4096 Apr 29 11:10  ./
+drwxrwxr-x 5 valery valery 4096 Apr 29 11:13  ../
+drwxrwxr-x 2 valery valery 4096 Apr 29 11:10 'Игрушки для дошколят'/
+drwxrwxr-x 2 valery valery 4096 Apr 29 11:10 'Игрушки для школьников'/
+
+
+7) Установить и удалить snap-пакет. (Любой, какой хотите)
+
+valery@valery-vm:~/Documents/test_2/part_1$ sudo apt update; upgrade -y
+valery@valery-vm:~/Documents/test_2/part_1$ sudo snap search telegram
+valery@valery-vm:~/Documents/test_2/part_1$ sudo snap install telegram-desktop
+telegram-desktop 4.8.1-2-g382558671 from Telegram FZ-LLC (telegram-desktop✓) installed
+valery@valery-vm:~/Documents/test_2/part_1$ sudo snap list
+valery@valery-vm:~/Documents/test_2/part_1$ sudo snap remove telegram-desktop 
+telegram-desktop removed
+
+
+8) Добавить произвольную задачу для выполнения каждые 3 минуты.
+(копирование из каталога А (/home/valery/Documents/test_2/) в каталог Б (/home/valery/Documents/backups/)).
+
+valery@valery-vm:~/Documents/backups$ crontab -e
+*/3 * * * * cp -ru /home/valery/Documents/test_2/ /home/valery/Documents/backups/
+crontab: installing new crontab
+valery@valery-vm:~$ crontab -l
+*/3 * * * * cp -ru /home/valery/Documents/test_2/ /home/valery/Documents/backups/
+
